@@ -3,7 +3,9 @@
 module memorymodule(address, clk, rst);
 	reg [15:0] instructions[0:26];
 
-	always@(posedge rst) begin
+	always@(posedge clk or negedge rst) begin
+	   if(!rst)
+	   begin
 		instructions[0] <= 16'b0000_0001_0010_1111;  //00 ADD R1, R2
 		instructions[1] <= 16'b0000_0001_0010_1110; 	//02 SUB R1, R2
 		instructions[2] <= 16'b0000_0011_0100_1100;  //04 OR R3, R4
@@ -30,5 +32,6 @@ module memorymodule(address, clk, rst);
 		instructions[23]<= 16'b0000_1101_1101_1110;	//2E SUB R13, R13
 		instructions[24]<= 16'b0000_1100_1101_1111;	//30 ADD R12, R13
 		instructions[25]<= 16'hEBCF;					//32 EBCF
+	  end
 	end
 endmodule

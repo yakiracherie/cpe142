@@ -1,8 +1,16 @@
 `timescale 1ns/1ns
 
-module memorymodule(address, clk, rst);
+module memorymodule(clk, rst, readAddress, instruction);
+        input clk, rst;
+        input [15:0] readAddress;
+        
+        output reg [15:0] instruction;
 	reg [15:0] instructions[0:26];
 
+	always@(*) begin
+            instruction = instructions[readAddress];
+        end
+        
 	always@(posedge clk or negedge rst) begin
 	   if(!rst)
 	   begin

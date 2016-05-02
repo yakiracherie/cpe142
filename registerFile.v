@@ -20,26 +20,26 @@ always @(posedge clk or negedge rst)
 begin
 	if (!reset)
 	begin
-		regfile[0] <= 16'b0000_0000_0000_0000; 
-		regfile[1] <= 16'b0000_1111_0000_0000;	
-		regfile[2] <= 16'b0000_0000_0101_0000;
-		regfile[3] <= 16'b1111_1111_0000_1111;
-		regfile[4] <= 16'b1111_0000_1111_1111;
-		regfile[5] <= 16'b0000_0000_0100_0000;
-		regfile[6] <= 16'b0000_0000_0010_0100;
-		regfile[7] <= 16'b0000_0000_1111_1111;
-		regfile[8] <= 16'b1010_1010_1010_1010;
-		regfile[9] <= 16'b0000_0000_0000_0000;
-		regfile[10] <= 16'b0000_0000_0000_0000;
-		regfile[11] <= 16'b0000_0000_0000_0000;
-		regfile[12] <= 16'b1111_1111_1111_1111;
-		regfile[13] <= 16'b0000_0000_0000_0010;
-		regfile[14] <= 16'b0000_0000_0000_0000;
-		regfile[15] <= 16'b0000_0000_0000_0000;						
+		registerfile[0] <= 16'b0000_0000_0000_0000; 
+		registerfile[1] <= 16'b0000_1111_0000_0000;	
+		registerfile[2] <= 16'b0000_0000_0101_0000;
+		registerfile[3] <= 16'b1111_1111_0000_1111;
+		registerfile[4] <= 16'b1111_0000_1111_1111;
+		registerfile[5] <= 16'b0000_0000_0100_0000;
+		registerfile[6] <= 16'b0000_0000_0010_0100;
+		registerfile[7] <= 16'b0000_0000_1111_1111;
+		registerfile[8] <= 16'b1010_1010_1010_1010;
+		registerfile[9] <= 16'b0000_0000_0000_0000;
+		registerfile[10] <= 16'b0000_0000_0000_0000;
+		registerfile[11] <= 16'b0000_0000_0000_0000;
+		registerfile[12] <= 16'b1111_1111_1111_1111;
+		registerfile[13] <= 16'b0000_0000_0000_0010;
+		registerfile[14] <= 16'b0000_0000_0000_0000;
+		registerfile[15] <= 16'b0000_0000_0000_0000;						
 	end
 	else if (RegWrite)
 	begin
-		regfile[readReg1] <= writeData;
+		registerfile[readReg1] <= writeData;
 	end
 end
 endmodule

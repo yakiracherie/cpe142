@@ -10,7 +10,7 @@ wire Branch, Jump, RegDst, MemtoReg, MemRead, ALUOp1, ALUOp0, MemWrite, ALUSrc, 
 initial
 	$vcdpluson;
 initial
-$monitor($time,"	Branch = %b Jump = %b, RegDst = %b, MemtoReg = %b, MemRead = %b ALUOp1 = %b, ALUOp0 = %b, MemWrite = %b, ALUSrc = %b RegWrite = %b, Branch, Jump, RegDst, MemtoReg, MemRead, ALUOp1, ALUOp0, MemWrite, ALUSrc, RegWrite
+$monitor($time,"opcode = %b Branch = %b Jump = %b, RegDst = %b, MemtoReg = %b, MemRead = %b ALUOp1 = %b, ALUOp0 = %b, MemWrite = %b, ALUSrc = %b RegWrite = %b, opcode, Branch, Jump, RegDst, MemtoReg, MemRead, ALUOp1, ALUOp0, MemWrite, ALUSrc, RegWrite
 control ctrl(opcode, Branch, Jump, RegDst, MemtoReg, MemRead, ALUOp1, ALUOp0, MemWrite, ALUSrc, RegWrite);
 
 initial

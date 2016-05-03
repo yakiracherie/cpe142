@@ -1,3 +1,5 @@
+`timescale 1ns / 1ns
+
 module ALUControl(clk, rst, ALUOp1, ALUOp0, funct, ALUControl);
 
 input clk, rst; 

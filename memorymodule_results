@@ -1,0 +1,20 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  May  2 19:30 2016
+VCD+ Writer I-2014.03-2 Copyright (c) 1991-2014 by Synopsys Inc.
+                   0	readAddress = 0000000000000000, instruction = 0000000100101111, rst = 0
+                  10	readAddress = 0000000000000001, instruction = 0000000100101110, rst = 0
+                  20	readAddress = 0000000000000010, instruction = 0000001101001100, rst = 0
+                  30	readAddress = 0000000000000011, instruction = 0000001100101101, rst = 0
+                  40	readAddress = 0000000000000100, instruction = 0000010101100001, rst = 0
+                  50	readAddress = 0000000000000101, instruction = 0000000101010010, rst = 0
+                  60	readAddress = 0000000000000110, instruction = 0000000000001110, rst = 0
+                  70	readAddress = 0000000000000111, instruction = 0000010000111010, rst = 0
+                  80	readAddress = 0000000000001000, instruction = 0000010000101011, rst = 0
+                  90	readAddress = 0000000000001001, instruction = 0000011000111000, rst = 0
+$finish called from file "memorymodule_fixture.v", line 107.
+$finish at simulation time                  100
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 100 ns
+CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
+Mon May  2 19:30:16 2016

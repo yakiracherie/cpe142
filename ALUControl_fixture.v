@@ -1,23 +1,23 @@
 `include "ALUControl.v"
 
-//Top level stimulus module
 module stimulus;
 
-//Declare variables for stimulating input
 reg [3:0] funct;
-reg ALUOp1, ALUOp0
-wire ALUCtrl;
+reg ALUOp1, ALUOp0;
+wire [3:0] ALUControl;
 
 initial
 	$vcdpluson;
 initial
-$monitor($time,"ALUOp1 = %b ALUOp0 = %b funct = %b, ALUCtrl = %b", ALUOp1, ALUOp0, funct, ALUCtrl);
-ALUControl ALUCtrl(ALUOp1, ALUOp0, funct, ALUCtrl);
+$monitor($time,"ALUOp1 = %b ALUOp0 = %b funct = %b, ALUCtrl = %b", ALUOp1, ALUOp0, funct, ALUControl);
+ALUControl ALUCtrl(clk, rst, ALUOp1, ALUOp0, funct, ALUControl);
 initial
 begin
+  clk = 0;
+  rst = 0;
   ALUOp1 = 1'b0;
   ALUOp0 = 1'b0;
-	funct = 4'b0000;
+  funct = 4'b0000;
 end
 initial
 begin

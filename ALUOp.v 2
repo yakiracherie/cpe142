@@ -1,0 +1,45 @@
+module ALUOp(Ctrl, A, B, R, O, N, Z);
+
+input wire [3:0]Ctrl;
+input wire [3:0] A, B;
+reg [7:0] temp;
+reg [7:0] result;
+output wire O, N, Z;  
+output wire [7:0] R;
+
+always@(*)
+  begin
+		case(Ctrl)
+			4'b1111: result = A[3:0] + B[3:0]; // add
+			4'b1110: result = A[3:0] - B[3:0]; // sub
+			4'b1101: result = A[3:0] & B[3:0]; // and
+			4'b1100: result = A[3:0] | B[3:0]; // or
+			4'b0001: result = A[3:0] * B[3:0]; // mul
+			4'b0010: result = A[3:0] / B[3:0]; // div
+		  4'b1010: result = A << B; // sll
+			4'b1011: result = A >> B; // slr
+			4'b1000: result = ((A << B) | (A >> (4-B)) ); // rol
+			4'b1001: result = (A>>B) | (A<<(4-B)); // ror
+			4'b0011: begin temp[3:0] = A[3:0]; // lw, sw 
+				temp[7] = A[3]; //sign extend
+				temp[6] = A[3];
+				temp[5] = A[3];
+				temp[4] = A[3];	
+				result = temp + B; //sign extend + op
+				end	
+			4'b0100: begin temp[3:0] = B[3:0]; // beq
+				temp[7] = B[3]; // sign extend and shift left
+				temp[6] = B[3];
+				temp[5] = B[3];
+				temp[4] = B[3];
+			  result = temp << 1;
+				end
+
+		endcase
+	end
+end
+assign R = result;
+assign Z = (result == 0);
+assign O = A[3]^B[3];
+assign N = result[3];
+endmodule

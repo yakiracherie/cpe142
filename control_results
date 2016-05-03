@@ -1,0 +1,16 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  May  2 18:54 2016
+VCD+ Writer I-2014.03-2 Copyright (c) 1991-2014 by Synopsys Inc.
+                   0	Branch = 0 Jump = 0, RegDst = 1, MemtoReg = 0, MemRead = 0 ALUOp1 = 0, ALUOp0 = 0, MemWrite = 0, ALUSrc = 0 RegWrite = 1
+                  10	Branch = 0 Jump = 0, RegDst = 0, MemtoReg = 1, MemRead = 1 ALUOp1 = 1, ALUOp0 = 0, MemWrite = 0, ALUSrc = 1 RegWrite = 1
+                  20	Branch = 0 Jump = 0, RegDst = x, MemtoReg = x, MemRead = 0 ALUOp1 = 1, ALUOp0 = 0, MemWrite = 1, ALUSrc = 1 RegWrite = 0
+                  30	Branch = 1 Jump = 0, RegDst = x, MemtoReg = x, MemRead = 0 ALUOp1 = 0, ALUOp0 = 1, MemWrite = 0, ALUSrc = 0 RegWrite = 0
+                  60	Branch = 0 Jump = 1, RegDst = x, MemtoReg = x, MemRead = 0 ALUOp1 = 0, ALUOp0 = 0, MemWrite = 0, ALUSrc = 0 RegWrite = 0
+                  70	Branch = 0 Jump = 0, RegDst = x, MemtoReg = x, MemRead = 0 ALUOp1 = 0, ALUOp0 = 0, MemWrite = 0, ALUSrc = 0 RegWrite = 0
+$finish called from file "control_fixture.v", line 49.
+$finish at simulation time                   80
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 80 ns
+CPU Time:      0.330 seconds;       Data structure size:   0.0Mb
+Mon May  2 18:54:19 2016

@@ -1,0 +1,47 @@
+module IDEX(clk, pc_Add2In, WB, M, EX, dataA, dataB, immed, regRs, regRt, regRd, pc_Add2Out, WBOut, MOut, ExOut, dataAOut, dataBOut, immedOut, regRsOut, regRtOut, regRdOut); 
+  input clk; 
+  input [1:0] WB; 
+  input [2:0] M; 
+  input [3:0] EX; 
+  input [15:0] dataA, dataB, immed, pc_Add2In;     
+	input [3:0] regRs, regRt, regRd; 
+	output [1:0] WBOut; 
+  output [2:0] MOut; 
+  output [3:0] EXOut; 
+	output [15:0] pc_Add2Out, dataAOut, dataBOut, immedOut;  
+	output [3:0] regRsOut, regRtOut, regRdOut; 
+	
+	reg [1:0] WBOut; 
+  reg [2:0] MOut; 
+  reg [3:0] EXOut; 
+  reg [15:0] pc_Add2Out, dataAOut, dataBOut, immedOut;  
+  reg [3:0] regRsOut, regRtOut, regRdOut;
+  
+  initial begin
+    WBOut = 0; 
+    MOut = 0; 
+    EXOut = 0; 
+    pc_Add2Out = 0;
+	  dataAOut = 0; 
+	  dataBOut = 0; 
+	  immedOut = 0; 
+	  regRsOut = 0; 
+	  regRtOut = 0; 
+	  regRdOut = 0; 
+	end 
+
+  always@(posedge clk) 
+  begin
+    WBOut <= WB; 
+    MOut <= M; 
+    EXOut <= EX; 
+    dataAOut <= dataA; 
+    dataBOut <= dataB; 
+    immedOut <= immed; 
+    regRsOut <= regRs; 
+    regRtOut <= regRt; 
+    regRdOut <= regRd; 
+	  pc_Add2Out <= pc_Add2In;
+  end 
+  
+endmodule 

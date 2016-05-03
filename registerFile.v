@@ -3,7 +3,7 @@
 module registerFile(clk, rst, readReg1, readReg2, writeReg, readData1, readData2, writeData, RegWrite);
 
 input clk, rst;
-input [3:0] readReg1, readReg2;
+input [3:0] readReg1, readReg2, writeReg;
 input [3:0] writeData; 
 input RegWrite;
 
@@ -18,7 +18,7 @@ end
 
 always @(posedge clk or negedge rst) 
 begin
-	if (!reset)
+	if (!rst)
 	begin
 		registerfile[0] <= 16'b0000_0000_0000_0000; 
 		registerfile[1] <= 16'b0000_1111_0000_0000;	
@@ -39,7 +39,7 @@ begin
 	end
 	else if (RegWrite)
 	begin
-		registerfile[readReg1] <= writeData;
+		registerfile[writeReg] <= writeData;
 	end
 end
 endmodule

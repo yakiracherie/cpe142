@@ -1,0 +1,19 @@
+module IFID(flush, clk, IFIDWrite, pc_Add2In, pc_Add2Out, instr_In, instr_Out);
+	input [15:0] pc_Add2In, instr_In; 
+  	input flush, clk, IFIDWrite; 
+  	output [15:0] instr_Out, pc_Add4Out; 
+  
+  	reg [15:0] instIn, pc_Add2Out; 
+  	
+  	always@(posedge clk or negedge flush) begin 
+  		if(~flush) begin 
+	    		instr_Out <= 0; 
+	    		pc_Add2Out <=0; 
+	 	end 
+
+	 	else if(IFIDWrite) begin
+	 		instr_Out <= instr_In;
+	 		pc_Add2Out <= pc_Add2In; 
+	  	end 
+	end 
+endmodule 

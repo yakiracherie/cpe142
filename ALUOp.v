@@ -5,7 +5,7 @@ module ALUOp(A, B, Crtl, R, O, N, Z);
 	output O, N, Z;
 
 	reg [15:0] R;
-	reg sa, sb, scum;
+	reg sa, sb, ssum;
 	reg [15:0] b2;
 	reg O, N, Z;
 	reg zero;

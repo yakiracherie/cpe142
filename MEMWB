@@ -1,0 +1,30 @@
+module MEMWB(clk, WB, readData, ALU_result, regRd, WBOut, readDataOut, ALU_resultOut, regRdOut); 
+   input clock; 
+   input [1:0] WB; 
+   input [15:0] readData, ALU_result;   
+   input [3:0] regRd; 
+
+   output [1:0] WBOut; 
+   output [15:0] readDataOut, ALU_resultOut; 
+   output [3:0] regRdOut; 
+ 
+   reg [1:0] WBOut; 
+   reg [15:0] readDataOut, ALU_resultOut; 
+   reg [3:0] regRdOut; 
+
+   initial begin 
+      WBOut = 0;
+      readDataOut = 0;
+      ALU_resultOut = 0; 
+      regRdOut = 0;
+    end 
+
+  always@(posedge clock) 
+    begin 
+      WBOut <= WB;
+      readDataOut <= readData;
+      ALU_resultOut <= ALU_result; 
+      regRdOut <= regRd;
+    end 
+
+endmodule 

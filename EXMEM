@@ -1,16 +1,42 @@
-module EXMEM(clk, WB, M, ALU_result, regRd, WriteData, Mreg, WBreg, ALU_resultOut, regRdreg, writeDataOut); 
-  input clk; 
+module EXMEM(clk, WB, M, zero, ALU_result, writeData, regRd, MOut, WBOut, zeroOut, ALU_resultOut, writeDataOut, regRdOut); 
+  input clk, zero; 
   input [1:0] WB; 
   input [2:0] M; 
   input [3:0] regRd; 
   input [15:0] ALU_result, writeData; 
-  output [1:0] WBreg; 
-  output [2:0] Mreg; 
-  output [15:0] ALU_result, writeDataOut; 
-  output [3:0] regRdreg; 
+
+  output [1:0] WBOut; 
+  output [2:0] MOut; 
+  output zeroOut;
+  output [15:0] ALU_resultOut, writeDataOut; 
+  output [3:0] regRdOut; 
   
-  reg [1:0] WBreg; 
-  reg [2:0] Mreg;  
-  reg [15:0] ALU_result, writeDataOut; 
-  reg [3:0] regRdreg; 
+  reg [1:0] WBout; 
+  reg [2:0] Mout;  
+  reg zeroOut;
+  reg [15:0] ALU_resultOut, writeDataOut;   
+  reg [3:0] regRdOut; 
+  
+  initial begin
+    WBout = 0; 
+    Mout = 0;  
+    zeroOut = 0;
+    ALU_resultOut = 0;
+    writeDataOut = 0;
+    regRdOut = 0;
+  end
+  
+  alaways@(posedge clk)
+  begin
+    WBout = WB; 
+    Mout = MB;  
+    zeroOut = zero;
+    ALU_resultOut = ALU_result;
+    writeDataOut = writeData;
+    regRdOut = regRd;
+  end
+
+endmodule
+
+  
 

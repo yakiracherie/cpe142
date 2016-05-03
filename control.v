@@ -1,8 +1,8 @@
 `timescale 1ns / 1ns
 
-module control(opcode, funct, Branch, Jump, RegDst, MemtoReg, MemRead, ALUOp1, ALUOp0, MemWrite, ALUSrc, RegWrite);
+module control(opcode, Branch, Jump, RegDst, MemtoReg, MemRead, ALUOp1, ALUOp0, MemWrite, ALUSrc, RegWrite);
 
-input [3:0] opcode, funct;
+input [3:0] opcode;
 
 output reg Branch, Jump, RegDst, MemtoReg, MemRead, ALUOp1, ALUOp0, MemWrite, ALUSrc, RegWrite;
 

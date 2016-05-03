@@ -1,0 +1,13 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  May  2 22:12 2016
+VCD+ Writer I-2014.03-2 Copyright (c) 1991-2014 by Synopsys Inc.
+                   0in = 00000001 out = 0000000000000001
+                  10in = 11111111 out = 1111111111111111
+                  20in = 10101010 out = 1111111110101010
+$finish called from file "SignExtend8_fixture.v", line 33.
+$finish at simulation time                   30
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 30
+CPU Time:      0.330 seconds;       Data structure size:   0.0Mb
+Mon May  2 22:12:04 2016

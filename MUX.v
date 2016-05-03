@@ -1,4 +1,4 @@
-module MUX(in0, in1, select, out);
+module MUX16bit(in0, in1, select, out);
 
 input [15:0] in0, in1;
 input select;

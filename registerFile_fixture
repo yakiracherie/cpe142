@@ -2,7 +2,7 @@
 
 module stimulus;
 
-reg [3:0] readReg1, readReg2;
+reg [3:0] readReg1, readReg2, writeReg;
 reg [15:0] writeData; 
 reg RegWrite;
 reg clk, rst;
@@ -11,9 +11,9 @@ wire [15:0] readData1, readData2;
 initial
 	$vcdpluson;
 initial
-$monitor($time,"	RegWrite = %b readReg1 = %b, readReg2 = %b, readData1 = %h, readData2 = %b, writeData = %b rst = %b", RegWrite, readReg1, readReg2, readData1, readData2, writeData, rst);
+$monitor($time,"RegWrite = %b readReg1 = %b, readReg2 = %b, readData1 = %h, readData2 = %b, writeReg = %b writeData = %b rst = %b", RegWrite, readReg1, readReg2, readData1, readData2, writeReg, writeData, rst);
 
-registerFile regFile(.clk(clk),.rst(rst), .readData1(readData1), .readData2(readData2), .writeData(writeData), .RegWrite(RegWrite), .readReg1(readReg1), .readReg2(readReg2));
+registerFile regFile(.clk(clk),.rst(rst), .readData1(readData1), .readData2(readData2), .writeReg(writeReg), .writeData(writeData), .RegWrite(RegWrite), .readReg1(readReg1), .readReg2(readReg2));
 initial
 begin
 	clk = 0;
@@ -21,6 +21,7 @@ begin
 	RegWrite = 1'b0;
 	readReg1 = 0;
 	readReg2 = 0;
+	writeReg = 0;
 end
 
 always
@@ -33,14 +34,11 @@ begin
 	readReg2 = 4'b0010;
 
 	#10
-	rst = 1;
-	RegWrite = 1'b1;
+	RegWrite = 1'b0;
 	readReg1 = 4'b0011;
 	readReg2 = 4'b0100;
-	writeData = 16'b0000_1111_0000_1111;
 	
 	#10
-	rst = 0;
 	RegWrite = 1'b0;
 	readReg1 = 4'b0101;
 	readReg2 = 4'b0110;
@@ -69,6 +67,13 @@ begin
 	RegWrite = 1'b0;
 	readReg1 = 4'b1111;
 	readReg2 = 4'b0000;
+	
+	#10
+	RegWrite = 1'b1;
+	writeReg = 4'b1111;
+	readReg1 = 4'b1111;
+	readReg2 = 4'b0000;
+	writeData = 16'b0000_1111_0000_1111;
 
 end
 

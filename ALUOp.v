@@ -1,5 +1,4 @@
-module ALUOp();
-module alu(A, B, Crtl, R, O, N, Z);
+module ALUOp(A, B, Crtl, R, O, N, Z);
 	input [15:0] A, B;
 	input [3:0] Crtl;
 	output [15:0] R;
@@ -55,10 +54,10 @@ module alu(A, B, Crtl, R, O, N, Z);
 	          R <= A >> B;
 	          
 	       4’b1000:		// rol
-	      
+	      	  R <= ((A << B) | (A >> (4-B)));
 	      
 	       4’b1001:		// ror		
-	       
+	       	  R <= ((A >> B) | (A << (4-B)));
 	   endcase
   end
 endmodule

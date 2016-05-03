@@ -1,19 +1,19 @@
 Chronologic VCS simulator copyright 1991-2014
 Contains Synopsys proprietary information.
-Compiler version I-2014.03-2; Runtime version I-2014.03-2;  May  2 19:46 2016
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  May  2 19:59 2016
 VCD+ Writer I-2014.03-2 Copyright (c) 1991-2014 by Synopsys Inc.
-                   0	RegWrite = 0 readReg1 = 0001, readReg2 = 0010, readData1 = 0f00, readData2 = 0000000001010000, writeData = xxxxxxxxxxxxxxxx rst = 0
-                  10	RegWrite = 1 readReg1 = 0011, readReg2 = 0100, readData1 = ff0f, readData2 = 1111000011111111, writeData = 0000111100001111 rst = 1
-                  15	RegWrite = 1 readReg1 = 0011, readReg2 = 0100, readData1 = 000f, readData2 = 1111000011111111, writeData = 0000111100001111 rst = 1
-                  20	RegWrite = 0 readReg1 = 0101, readReg2 = 0110, readData1 = 0040, readData2 = 0000000000100100, writeData = 0000111100001111 rst = 0
-                  30	RegWrite = 0 readReg1 = 0111, readReg2 = 1000, readData1 = 00ff, readData2 = 1010101010101010, writeData = 0000111100001111 rst = 0
-                  40	RegWrite = 0 readReg1 = 1001, readReg2 = 1010, readData1 = 0000, readData2 = 0000000000000000, writeData = 0000111100001111 rst = 0
-                  50	RegWrite = 0 readReg1 = 1011, readReg2 = 1100, readData1 = 0000, readData2 = 1111111111111111, writeData = 0000111100001111 rst = 0
-                  60	RegWrite = 0 readReg1 = 1101, readReg2 = 1110, readData1 = 0002, readData2 = 0000000000000000, writeData = 0000111100001111 rst = 0
-                  70	RegWrite = 0 readReg1 = 1111, readReg2 = 0000, readData1 = 0000, readData2 = 0000000000000000, writeData = 0000111100001111 rst = 0
-$finish called from file "registerFile_fixture.v", line 77.
+                   0RegWrite = 0 readReg1 = 0001, readReg2 = 0010, readData1 = 0f00, readData2 = 0000000001010000, writeReg = 0000 writeData = xxxxxxxxxxxxxxxx rst = 0
+                  10RegWrite = 0 readReg1 = 0011, readReg2 = 0100, readData1 = ff0f, readData2 = 1111000011111111, writeReg = 0000 writeData = xxxxxxxxxxxxxxxx rst = 0
+                  20RegWrite = 0 readReg1 = 0101, readReg2 = 0110, readData1 = 0040, readData2 = 0000000000100100, writeReg = 0000 writeData = xxxxxxxxxxxxxxxx rst = 0
+                  30RegWrite = 0 readReg1 = 0111, readReg2 = 1000, readData1 = 00ff, readData2 = 1010101010101010, writeReg = 0000 writeData = xxxxxxxxxxxxxxxx rst = 0
+                  40RegWrite = 0 readReg1 = 1001, readReg2 = 1010, readData1 = 0000, readData2 = 0000000000000000, writeReg = 0000 writeData = xxxxxxxxxxxxxxxx rst = 0
+                  50RegWrite = 0 readReg1 = 1011, readReg2 = 1100, readData1 = 0000, readData2 = 1111111111111111, writeReg = 0000 writeData = xxxxxxxxxxxxxxxx rst = 0
+                  60RegWrite = 0 readReg1 = 1101, readReg2 = 1110, readData1 = 0002, readData2 = 0000000000000000, writeReg = 0000 writeData = xxxxxxxxxxxxxxxx rst = 0
+                  70RegWrite = 0 readReg1 = 1111, readReg2 = 0000, readData1 = 0000, readData2 = 0000000000000000, writeReg = 0000 writeData = xxxxxxxxxxxxxxxx rst = 0
+                  80RegWrite = 1 readReg1 = 1111, readReg2 = 0000, readData1 = 0000, readData2 = 0000000000000000, writeReg = 1111 writeData = 0000111100001111 rst = 0
+$finish called from file "regFile_fixture.v", line 82.
 $finish at simulation time                  100
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 100 ns
-CPU Time:      0.330 seconds;       Data structure size:   0.0Mb
-Mon May  2 19:46:47 2016
+CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
+Mon May  2 19:59:53 2016

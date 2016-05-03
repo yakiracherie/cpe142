@@ -1,0 +1,16 @@
+module EXMEM(clk, WB, M, ALU_result, regRd, WriteData, Mreg, WBreg, ALU_resultOut, regRdreg, writeDataOut); 
+  input clk; 
+  input [1:0] WB; 
+  input [2:0] M; 
+  input [3:0] regRd; 
+  input [15:0] ALU_result, writeData; 
+  output [1:0] WBreg; 
+  output [2:0] Mreg; 
+  output [15:0] ALU_result, writeDataOut; 
+  output [3:0] regRdreg; 
+  
+  reg [1:0] WBreg; 
+  reg [2:0] Mreg;  
+  reg [15:0] ALU_result, writeDataOut; 
+  reg [3:0] regRdreg; 
+

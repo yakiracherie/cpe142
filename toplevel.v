@@ -70,7 +70,7 @@ wire [15:0] outMux16;
 wire [3:0] outMux4;
 
 // PCAdder.v
-wire [15:0] PCOut;
+wire [15:0] PCAddout;
 
 // ShiftLeft1.v
 wire [15:0] outSL;
@@ -87,23 +87,31 @@ wire Branch, Jump, RegDst, MemtoReg, MemRead, ALUOp1, ALUOp0, MemWrite, ALUSrc, 
 // registerFile.v
 wire [15:0] readData1, readData2;
 
-PC pc(.clk(clk), .rst(rst), .PCin(PCin), .PCout());
-memorymodule memorymodule(clk, rst, readAddress, instruction);
-ALUControl ALUControl(.clk(clk), .rst(rst), .ALUOp1(), .ALUOp0(), .funct, ALUControl);
-ALUOp ALUOp(A, B, Crtl, R, O, N, Z);
-BranchAND BranchAND(in1, in2, out);
-EXMEM EXMEM(clk, WB, M, zero, ALU_result, writeData, regRd, MOut, WBOut, zeroOut, ALU_resultOut, writeDataOut, regRdOut);
-HazardDetection HazardDetection(IFIDRegRs, IFIDRegRt, IDEXRegRt, IDEXMemRead, PCWrite, IFIDWrite, mux);
-IDEX IDEX(clk, pc_Add2In, WB, M, EX, dataA, dataB, immed, regRs, regRt, regRd, pc_Add2Out, WBOut, MOut, ExOut, dataAOut, dataBOut, immedOut, regRsOut, regRtOut, regRdOut);
-IFID IFID(flush, clk, IFIDWrite, pc_Add2In, pc_Add2Out, instr_In, instr_Out);
-MEMWB MEMWB(clk, WB, readData, ALU_result, regRd, WBOut, readDataOut, ALU_resultOut, regRdOut);
-MUX16bit MUX16bit(in0, in1, select, out);
-MUX4bit MUX4bit(in0, in1, select, out);
-PCAdder PCAdder(PCin, i, PCout);
-ShiftLeft1 ShiftLeft1(in, out);
-SignExtend4 SignExtend4(in, out);
-SignExtend8 SignExtend8(in, out);
-control control(opcode, Branch, Jump, RegDst, MemtoReg, MemRead, ALUOp1, ALUOp0, MemWrite, ALUSrc, RegWrite);
-registerFile registerFile(clk, rst, readReg1, readReg2, writeReg, readData1, readData2, writeData, RegWrite);
+PC pc(.clk(clk), .rst(rst), .PCin(), .PCout(PCout));
+memorymodule memorymodule(.clk(clk), .rst(rst), .readAddress(PCOut), .instruction(instruction));
+ALUControl ALUControl(.clk(clk), .rst(rst), .ALUOp1(), .ALUOp0(), .funct(), .ALUControl(ALUControl));
+ALUOp ALUOp(.A(), .B(), .Crtl(), .R(Result), .O(O), .N(N), .Z(Z));
+BranchAND BranchAND(.in1(Z), .in2(Branch), .out(branchZero));
+EXMEM EXMEM(.clk(clk), .WB(), .M(), .zero(), .ALU_result(), .writeData(), .regRd(), .MOut(MOut), .WBOut(WBOut), 
+            .zeroOut(zeroOut), .ALU_resultOut(ALU_resultOut), .writeDataOut(writeDataOut), .regRdOut(regRdOut));
+HazardDetection HazardDetection(.IFIDRegRs(), .IFIDRegRt(), .IDEXRegRt(), .IDEXMemRead(), .PCWrite(PCWrite), .IFIDWrite(IFIDWrite), .mux(mux));
+IDEX IDEX(.clk(clk), .pc_Add2In(), .WB(), .M(), .EX(), .dataA(), .dataB(), .immed(), .regRs(), 
+          .regRt(), .regRd(), .pc_Add2Out(pc_Add2Out), .WBOut(WBOut), .MOut(MOut), .ExOut(ExOut), 
+          .dataAOut(dataAOut), .dataBOut(dataBOut), .immedOut(immedOut), .regRsOut(regRSOut), .regRtOut(regRtOut), .regRdOut(regRdOut));
+IFID IFID(.flush(), .clk(clk), .IFIDWrite(), .pc_Add2In(), .pc_Add2Out(pc_Add2Out), .instr_In(), .instr_Out(instr_Out));
+MEMWB MEMWB(.clk(clk), .WB(), .readData(), .ALU_result(), .regRd(), .WBOut(WBOut), .readDataOut(readDataOut), .ALU_resultOut(ALU_resultOut), .regRdOut(regRdOut));
+MUX16bit MUX16bit_a(.in0(), .in1(), .select(branchZero), .out(outMux16_a));
+MUX16bit MUX16bit_b(.in0(), .in1(), .select(Jump), .out(outMux16_b));
+MUX16bit MUX4bit_a(.in0(), .in1(), .select(RegDst), .out(outMux4_a));
+MUX16bit MUX4bit_b(.in0(), .in1(), .select(ALUSrc), .out(outMux4_b));
+MUX4bit MUX4bit_c(.in0(), .in1(), .select(MemtoReg), .out(outMux4_c));
+PCAdder PCAdder.PCin(), .i(2), .PCout(PCAddout));
+ShiftLeft1 ShiftLeft1_a(.in(), .out(outSL_a));
+ShiftLeft1 ShiftLeft1_b(.in(), .out(outSL_b));
+SignExtend4 SignExtend4_a(.in(), .out(outSE4_a));
+SignExtend4 SignExtend4_b(.in(), .out(outSE4_b));
+SignExtend8 SignExtend8(.in(), .out(outSE8));
+control control(.opcode(), .Branch(Branch), .Jump(Jump), .RegDst(RegDst), .MemtoReg(MemtoReg), .MemRead(MemRead), .ALUOp1(ALUOp1), .ALUOp0(ALUOp0), .MemWrite(MemWrite), .ALUSrc(ALUSrc), .RegWrite(RegWrite));
+registerFile registerFile(clk(clk), rst(rst), readReg1(), readReg2(), writeReg(), readData1(readData1), readData2(readData2), writeData(), .RegWrite());
 
 endmodule
